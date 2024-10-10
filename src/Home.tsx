@@ -1,8 +1,6 @@
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-    import FastImage from 'react-native-fast-image';
 import YourImage from "./FastImage";  // Importer FastImage pour le GIF
 
 export default function Home() {
@@ -19,7 +17,7 @@ export default function Home() {
         return (
             <View style={styles.container}>
                 <Text style={styles.message}>We need your permission to show the camera</Text>
-                <Button onPress={requestPermission} title="grant permission" />
+                <Button onPress={requestPermission} title="Grant Permission" />
             </View>
         );
     }
@@ -30,6 +28,7 @@ export default function Home() {
 
     return (
         <View style={styles.container}>
+            {/* CameraView pour la caméra */}
             <CameraView style={styles.camera} facing={facing}>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
@@ -38,7 +37,10 @@ export default function Home() {
                 </View>
             </CameraView>
 
-            <YourImage></YourImage>
+            {/* YourImage avec un style absolu pour se superposer à la caméra */}
+            <View style={styles.gifContainer}>
+                <YourImage />
+            </View>
         </View>
     );
 }
@@ -71,11 +73,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white',
     },
-    gif: {
-        width: 100,
-        height: 100,  // Taille du GIF
-        position: 'absolute',  // Le GIF sera au-dessus de la caméra
-        bottom: 50,  // Ajuster la position en bas
-        alignSelf: 'center',
+    gifContainer: {
+        position: 'absolute',  // Position absolue pour superposer le GIF
+        bottom: 20,  // Ajuster la position verticale en bas
+        left: 30,
+        alignSelf: 'center',  // Centrer horizontalement
+        width: 500,
+        height: 500,  // Taille du conteneur du GIF
     },
 });

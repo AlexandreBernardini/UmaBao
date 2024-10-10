@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, ActivityIndicator, View} from 'react-native';
+import {StyleSheet, ActivityIndicator, View, Image} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 const YourImage = () => {
@@ -9,9 +9,9 @@ const YourImage = () => {
     return (
         <View style={styles.container}>
             {loading && <ActivityIndicator size="large" color="#0000ff" />}
-            <FastImage
+            <Image
                 style={styles.image}
-                source={require('../assets/pres-ok-unscreen 1.gif')}
+                source={require('../assets/monbrian.png')}
                 resizeMode={FastImage.resizeMode.contain}
                 onLoad={() => setLoading(false)}
                 onError={() => {
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
         width: 200,
     },
     image: {
-        width: 200,
-        height: 200,
+        width: 80,
+        height: 8A0,
     },
 });
 
